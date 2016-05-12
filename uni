@@ -2,15 +2,6 @@
 
 pid='/home/denis/rail_project/demo/tmp/pids/unicorn.pid'
 
-check() {
-if [ -f pid ]; then
-existf = 1
- echo "This PID allredy use"
-else
-exit 1
-fi
-}
-
 case $1 in
 "start") [ -f $pid ] && echo "Already running" || ( cd /home/denis/rail_project/demo/ && unicorn_rails -c config/unicorn.rb -E production -D);;
 "stop") [ -f $pid ] && kill `cat $pid`;;
